@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /steamcmd
+steamcmd +runscript update.txt
+cd /srcds
+srcds.exe -console -game tf +maxplayers 24 +map cp_5gorge
