@@ -2,4 +2,7 @@
 cd /steamcmd
 steamcmd +runscript update.txt
 cd /srcds
-srcds.exe -console -game tf +maxplayers 24 +map cp_5gorge
+./srcds_run -console -game tf +maxplayers 24 +map cp_5gorge -autoupdate
+./srcds_run -console -game insurgency +maxplayers 24 +map market -autoupdate
+./srcds_run -console -game nucleardawn +maxplayers 24 +map downtown -autoupdate
+#screen -A -m -d -S serverName
