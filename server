@@ -1,8 +1,14 @@
 #!/bin/bash
-cd /steamcmd
-steamcmd +runscript update.txt
-cd /srcds
-./srcds_run -console -game tf +maxplayers 24 +map cp_5gorge -autoupdate
-./srcds_run -console -game insurgency +maxplayers 24 +map market -autoupdate
-./srcds_run -console -game nucleardawn +maxplayers 24 +map downtown -autoupdate
+tf=('tf2' 'steamapps/common/Team\ Fortress\ 2\ Dedicated\ Server/' 'cp_5gorge')
+declare -a nd=('nd' 'steamapps/common/Nuclear\\ Dawn/' 'downtown');
+declare -a ins=('insurgency' 'steamapps/common/Insurgency\\ Dedicated\\ Server/' 'market');
+
+selected=("${tf[@]}")
+
+cd ../steamcmd/
+./steamcmd.sh +runscript ../tpgameserver/${selected[0]}/update.txt
+echo ${selected[1]} and stuff
+eval cd "${selected[1]}"
+cd steamapps
+./srcds_run -console +maxplayers 24 +map ${selected[2]}
 #screen -A -m -d -S serverName
