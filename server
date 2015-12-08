@@ -1,8 +1,8 @@
 #!/bin/bash
 # Game arrays
 tf=('tf2' 'steamapps/common/Team\ Fortress\ 2\ Dedicated\ Server/tf/cfg/' 'cp_5gorge')
-nd=('nd' 'steamapps/common/Nuclear\\ Dawn/nucleardawn/cfg/' 'downtown');
-ins=('insurgency' 'steamapps/common/Insurgency\\ Dedicated\\ Server/insurgency/cfg/' 'market');
+nd=('nd' 'steamapps/common/Nuclear\ Dawn/nucleardawn/cfg/' 'downtown');
+ins=('insurgency' 'steamapps/common/Insurgency\ Dedicated\ Server/insurgency/cfg/' 'market');
 
 # Pick the game array to use
 selected=()
