@@ -1,14 +1,28 @@
 #!/bin/bash
-tf=('tf2' 'steamapps/common/Team\ Fortress\ 2\ Dedicated\ Server/' 'cp_5gorge')
-declare -a nd=('nd' 'steamapps/common/Nuclear\\ Dawn/' 'downtown');
-declare -a ins=('insurgency' 'steamapps/common/Insurgency\\ Dedicated\\ Server/' 'market');
+# Game arrays
+tf=('tf2' 'steamapps/common/Team\ Fortress\ 2\ Dedicated\ Server/tf/cfg/' 'cp_5gorge')
+nd=('nd' 'steamapps/common/Nuclear\\ Dawn/nucleardawn/cfg/' 'downtown');
+ins=('insurgency' 'steamapps/common/Insurgency\\ Dedicated\\ Server/insurgency/cfg/' 'market');
 
-selected=("${tf[@]}")
+# Pick the game array to use
+selected=()
+if [ "$1" == "tf2" ]; then
+    selected=("${tf[@]}")
+elif [ "$1" == "nd" ]; then
+    selected=("${nd[@]}")
+elif [ "$1" == "insurgency" ]; then
+    selected=("${ins[@]}")
+fi
 
-cd ../steamcmd/
-./steamcmd.sh +runscript ../tpgameserver/${selected[0]}/update.txt
-echo ${selected[1]} and stuff
+# Execute update of selected game
+cd ~/steamcmd/
+./steamcmd.sh +runscript ~/tpgameserver/${selected[0]}/update.txt
+
+# Copy selected game files
 eval cd "${selected[1]}"
-cd steamapps
+cp ~/tpgameserver/${selected[0]}/* ./
+
+# Run selected game
+cd ../../
 ./srcds_run -console +maxplayers 24 +map ${selected[2]}
 #screen -A -m -d -S serverName
